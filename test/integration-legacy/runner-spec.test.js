@@ -193,11 +193,11 @@ describe('Runner', function () {
 
                             // Sanity
                             expect(cursor.iteration).to.eql(runStore.iteration);
-                            expect(cursor.position).to.eql(runStore.position);
+                            !cursor.snr && expect(cursor.position).to.eql(runStore.position);
                             expect(cursor.ref).to.eql(runStore.ref);
 
                             // This collection has no pre-request scripts
-                            expect(results.length).to.be(0);
+                            !cursor.snr && expect(results.length).to.be(0);
                         });
                     },
                     beforeTest: function (err, cursor, events) {
